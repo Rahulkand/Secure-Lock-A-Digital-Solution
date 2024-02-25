@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #010b16;
+      padding: 20px;
+    }
+
+    .child-container {
+        position: fixed;
+        top: 20px;
+        left: 80px;
+        right: 80px;
+        bottom: 20px;
+        border: none;
+        border-radius: 15px;
+        padding: 200px;
+        background-color: rgb(245, 228, 144);
+        overflow: hidden;
+    }
+
+    .inner-container {
+      border: none;
+      border-radius: 10px;
+      padding: 20px 60px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+      background-color: rgba(245, 243, 243, 0.3);
+    }
+
+    .Register {
+      color: black;
+      margin-left: 135px;
+      font-size: xx-large;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .email {
+      color: black;
+      font-weight: 500;
+    }
+    
+    .number{
+        color: black;
+        font-weight: 500;
+    }
+
+    .name{
+        color: black;
+        font-weight: 500;
+    }
+
+
+    .newPassword {
+      color: black;
+      font-weight: 500;
+    }
+
+    .confirmNewPassword {
+      color: black;
+      font-weight: 500;
+    }
+
+    .input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px auto;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      color: black;
+      background-color: #f2f0f0;
+      transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .input:hover {
+      background-color: #f2f0f0;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .input:focus {
+      border-color: #f2f0f0
+    }
+
+    .btn {
+        width: 125px;
+        height: 40px;
+        margin-left: 130px;
+        margin-top: 10px;
+        background-color: black;
+        border-radius:10px;
+        color: white; 
+      }
+      
+      .btn:hover {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        background-color: black;
+        transition: 3s;
+      }
+
+    .forgotpassword {
+      margin-left: 125px;
+      color: black;
+      font-weight: 500;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class='container'>
+    <div class='child-container'>
+        <div class='inner-container'>
+        <p class='Register'>Register</p>
+        <div>
+            <form action="/register" method="post">
+                <div>
+                <label class="email">Enter Email</label>
+                <input type="text" id="email" name="email" class='input' placeholder='Email' />
+                </div>
+                <div>
+                    <label class="name">Enter a Name</label>
+                    <input type="text" id="name" name="name" class='input' placeholder='Name' />
+                    </div>
+                <div>
+                <div>
+                    <label class="number">Enter a phone number</label>
+                    <input type="text" id="phone" name="phone" class='input' placeholder='Number' />
+                <div>
+                <div>
+                <label class="newPassword">Enter a Password</label>
+                <input type="password" id="password" name="password" class='input' placeholder='🔒' />
+                </div>
+                <div>
+                  <label class="photo">Upload Photo</label>
+                  <input type="file" name="photo" class='input' accept="image/*" required />
+                </div>
+                
+                <button class='btn'>Submit</button>
+            </form>
+        <p>
+          <a href="/forgot-password" class='forgotpassword'>Forgot Password?</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+

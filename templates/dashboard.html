@@ -1,0 +1,163 @@
+<!-- templates/dashboard.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Lock Dashboard</title>
+    <style>
+        /* static/style.css */
+
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 176px;
+            background-color: rgb(245, 228, 144); /* Use the desired background color */
+            color: black; /* Text color */
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .dashboard-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .user-info {
+            margin-top: 20px;
+            /* Add styling for user information */
+        }
+
+        .lock-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            /* Add styling for lock/unlock buttons */
+        }
+
+        .biometric-toggle {
+            margin-top: 20px;
+            align-items: center;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        .verification-buttons{
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <h1 class='title'>Welcome to Secure Lock User</h1>
+        <div class='dashboard-container'>
+            <form method="post" action="{{ url_for('face_recognition') }}">
+                <div class='notification-tab'>
+                    <p>{% if face_toggle %}Unique Id: {{unique_id}}{% endif %}</p>
+                </div>
+                <div class='user-info'>
+                    <p>Name: {{ user_name }}</p>
+                    <p>Phone Number: {{ user_phone }}</p>
+                </div>
+                <div class='lock-buttons'>
+                    <button type="submit" id='unlock-button'>Start 3 Factor Verification</button>
+                </div>
+                <div class='biometric-toggle'>
+                    <!-- Add this inside the <div class='biometric-toggle'> element -->
+                    <label class='switch'>
+                        <input type='checkbox' {% if face_toggle %}checked{% endif %} disabled>
+                        <span class='slider round'></span>
+                    </label>
+                    <p>{% if face_toggle %}Face Recognition Done... Successfully{% endif %}</p>
+                    <label class='switch'>
+                        <input type='checkbox' {% if fingerprint_toggle %}checked{% endif %} disabled>
+                        <span class='slider round'></span>
+                    </label>
+                    <p>{% if fingerprint_toggle %}FingerPrint Recognition Done... Successfully{% endif %}</p>
+                    <label class='switch'>
+                        <input type='checkbox' {% if otp_toggle %}checked{% endif %} disabled>
+                        <span class='slider round'></span>
+                    </label>
+                    <p>{% if otp_toggle %}OTP Done... Successfully{% endif %}</p>
+                </div>
+            </form>
+            <div class="verification-buttons">
+                <form action="{{url_for('finger_recog')}}">{% if face_toggle %}<button type="submit" id="lock-button" class="lock-button-unlock">Scan FingerPrint</button>{% endif %}
+                </form>
+                <form action="{{url_for('otp_lock_open')}}">{% if fingerprint_toggle %}<button type="submit" id="lock-button">Generate OTP</button>{% endif %}
+                </form>
+                <form action="{{url_for('trigger_servo')}}">{% if otp_toggle %}<button type="submit" id="lock-button">Unlock!!!</button>{% endif %}
+                </form>
+            </div>
+            <form action="{{url_for('lock')}}">
+                <button type="submit" id="lock-button">Lock</button>
+            </form>
+            <form action="{{url_for('logout')}}">
+                <button type="submit" id="lock">LogOut</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

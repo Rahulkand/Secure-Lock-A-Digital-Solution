@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Feed</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgb(245, 228, 144);
+        }
+
+        .camera-container {
+            text-align: center;
+        }
+
+        .camera {
+            margin-bottom: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="camera-container">
+        <h1 class="camera">Secure Lock Camera Feed</h1>
+        <img id="video-feed" src="{{ url_for('video_feed') }}" alt="Camera Feed" width="60%">
+    </div>
+    <form method="post" action="{{ url_for('verification_face') }}">
+        <button id="go-back-button">Verify Face</button>
+    </form>
+</body>
+</html>

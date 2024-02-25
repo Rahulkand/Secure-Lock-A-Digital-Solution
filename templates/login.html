@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgb(13, 0, 2);
+      padding: 20px;
+    }
+
+    .child-container {
+      position: fixed;
+      top: 20px;
+      left: 30px;
+      right: 30px;
+      bottom: 20px;
+      border-radius: 30px;
+      background-color: rgb(246, 236, 182);
+      padding: 200px;
+    }
+
+    .wrapper-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 15px;
+      margin-top: 14px;
+      margin-bottom: 14px;
+      border: none;
+      border-radius: 30px;
+      overflow: hidden;
+      background: url('locker.jpg') center center/cover;
+    }
+
+    .inner-container {
+      border: none;
+      background-color: rgba(245, 243, 243, 0.8);
+      border-radius: 30px;
+      padding: 100px 60px;
+      position: absolute;
+      top: 50%;
+      height: 330px;
+      right: 79%;
+      transform: translate(50%, -50%);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+      width: 30%;
+    }
+
+    .LogIn {
+      color: black;
+      font-weight: bold;
+      font-size: x-small;
+      margin-left: 170px;
+      margin-top: 10px;
+      font-size: x-large;
+    }
+
+    #identifier {
+      color: #034295;
+      font-weight: 500;
+      width: 305px;
+      margin-left: 40px;
+    }
+
+    .currentPassword {
+      color: #034295;
+      font-weight: 500;
+      width: 139px;
+      margin-left: 39px;
+    }
+
+    .input {
+      width: 79%;
+      padding: 10px;
+      margin: 5px auto;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      color: black;
+      background-color: #f2f0f0;
+      transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .input:hover {
+      background-color: #f2f0f0;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .input:focus {
+      border-color: #f2f0f0
+    }
+
+    .btn {
+      width: 84%;
+      margin-left: 40px;
+      margin-top: 35px;
+      color: white;
+      background-color: black;
+      height:35px;
+      border-radius: 10px;
+    }
+
+    .btn:hover {
+      box-shadow: 10px;
+      background-color: black;
+      transition: 3s;
+    }
+
+    .noAccount {
+      color: black;
+      font-size: small;
+      margin-top: 15px;
+      margin-left: 105px;
+    }
+    .footer-text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 110px;
+      color: black;
+      font-size: small;
+    }
+
+    .footer-text p {
+      margin: 0;
+      padding: 0 10px;
+    }
+
+    .vertical-line {
+      height: 15px;
+      width: 1px;
+      background-color: #000;
+      margin: 0 1px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class='container'>
+    <div class='child-container'>
+      <div class='wrapper-container'>
+        <div class='inner-container'>
+          <p class='LogIn'>Log In</p>
+          <form action="/login" method="post">
+            <div>
+                <label class="currentEmail"></label>
+                <input type="text" id="identifier" name="identifier" class='input' placeholder='Email' />
+            </div>
+            <div>
+                <label class="currentPassword"></label>
+                <input type="password" id="password" name="password" class='input' placeholder='Password' />
+            </div>
+            <button class='btn'>Log In</button>
+        </form>
+          <div class='noAccount'>Don't have an account? <a href='/register'>Register</a></div>
+          <div class="footer-text">
+            <p>Terms of Use</p>
+            <div class="vertical-line"></div>
+            <p>Privacy Policy</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

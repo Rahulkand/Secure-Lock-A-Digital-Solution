@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify OTP</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #010b16;
+      padding: 20px;
+    }
+
+    .child-container {
+        position: fixed;
+        top: 20px;
+        left: 80px;
+        right: 80px;
+        bottom: 20px;
+        border: none;
+        border-radius: 15px;
+        padding: 200px;
+        background-color: rgb(245, 228, 144);
+        overflow: hidden;
+    }
+
+    .inner-container {
+      border: none;
+      border-radius: 10px;
+      padding: 20px 60px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+      background-color: rgba(245, 243, 243, 0.3);
+    }
+
+    .Register {
+      color: black;
+      margin-left: 49px;
+      font-size: xx-large;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .otp{
+        border-radius: 5px;
+        height: 25px;
+    }
+
+    .input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px auto;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      color: black;
+      background-color: #f2f0f0;
+      transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .input:hover {
+      background-color: #f2f0f0;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .input:focus {
+      border-color: #f2f0f0
+    }
+
+    .btn {
+        width: 125px;
+        height: 40px;
+        margin-left: 73px;
+        margin-top: 35px;
+        background-color: black;
+        border-radius:10px;
+        color: white; 
+      }
+      
+      .btn:hover {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        background-color: black;
+        transition: 3s;
+      }
+  </style>
+</head>
+
+<body>
+  <div class='container'>
+    <div class='child-container'>
+        <div class='inner-container'>
+            <p class='Register'>Verify OTP</p>
+            {% if error %}
+            <p style="color: red;">{{ error }}</p>
+            {% endif %}
+            <form method="post" action="{{ url_for('verify_otp') }}">
+                <input type="hidden" name="identifier" value="{{ identifier }}">
+                <label for="otp" >Enter OTP:</label>
+                <input type="password" class='otp' id="otp" name="otp" required>
+                <br>
+                <button class ='btn' type="submit" value="Verify OTP">Submit</button>
+            </form>
+        <div>
+    </div>
+  </div>
+</body>
+
+</html>
+
